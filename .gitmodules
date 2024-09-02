@@ -1,0 +1,3 @@
+[submodule "trustless-indexer"]
+	path = trustless-indexer
+	url = https://github.com/Plopmenz/trustless-indexer
