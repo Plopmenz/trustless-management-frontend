@@ -49,7 +49,7 @@ export const InputParameterTuple = ({
   return (
     <div>
       {!hideTitle && (
-        <p className="text-base font-normal leading-tight text-neutral-800 md:text-lg mb-3">
+        <p className="mb-3 text-base font-normal leading-tight text-neutral-800 md:text-lg">
           {abi.name ? decodeCamelCase(abi.name) : "Parameter " + (idx + 1)}
         </p>
       )}

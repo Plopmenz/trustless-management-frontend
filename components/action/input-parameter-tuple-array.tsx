@@ -52,7 +52,7 @@ export const InputParameterTupleArray = ({
           {values.map((_, i) => (
             <div key={i} className="mt-6">
               <div className="flex justify-between">
-                <p className="text-base font-normal leading-tight text-neutral-800 md:text-lg mb-3">
+                <p className="mb-3 text-base font-normal leading-tight text-neutral-800 md:text-lg">
                   {abi.name
                     ? decodeCamelCase(abi.name)
                     : "Parameter " + (idx + 1)}
@@ -68,7 +68,7 @@ export const InputParameterTupleArray = ({
               />
             </div>
           ))}
-          <div className="flex justify-end mt-3">
+          <div className="mt-3 flex justify-end">
             <Button size="sm" variant="secondary" onClick={addMore}>
               Add more{" "}
               {!abi.name ? "" : decodeCamelCase(abi.name).toLowerCase()}
@@ -77,7 +77,7 @@ export const InputParameterTupleArray = ({
         </div>
       ) : (
         <div>
-          <p className="text-base font-normal leading-tight text-neutral-800 md:text-lg mb-3">
+          <p className="mb-3 text-base font-normal leading-tight text-neutral-800 md:text-lg">
             {abi.name ? decodeCamelCase(abi.name) : "Parameter " + (idx + 1)}
           </p>
           <p>

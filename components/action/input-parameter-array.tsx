@@ -50,7 +50,7 @@ export const InputParameterArray = ({
 
   return (
     <div className="mt-6">
-      <p className="text-base font-normal leading-tight text-neutral-800 md:text-lg mb-3">
+      <p className="mb-3 text-base font-normal leading-tight text-neutral-800 md:text-lg">
         {abi.name ? decodeCamelCase(abi.name) : "Parameter " + (idx + 1)}
       </p>
       {value.map((item, i) => (
@@ -67,7 +67,7 @@ export const InputParameterArray = ({
           />
         </div>
       ))}
-      <div className="flex justify-end mt-3">
+      <div className="mt-3 flex justify-end">
         <Button size="sm" variant="secondary" onClick={addMore}>
           Add more {!abi.name ? "" : decodeCamelCase(abi.name).toLowerCase()}
         </Button>

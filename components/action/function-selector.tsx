@@ -81,15 +81,15 @@ export const FunctionSelector = ({
   const functionAbiList = (abi || []).filter((item) => item.type === "function")
 
   return (
-    <div className="flex h-96 bg-neutral-0 rounded-lg border border-neutral-200">
+    <div className="bg-neutral-0 flex h-96 rounded-lg border border-neutral-200">
       {/* Side bar */}
-      <div className="w-1/3 px-2 py-4 overflow-y-auto overflow-x-auto border-r border-neutral-200">
+      <div className="w-1/3 overflow-auto border-r border-neutral-200 px-2 py-4">
         <ul className="select-none space-y-1">
           {functionAbiList.map((fn, index) => (
             <li
               key={index}
               onClick={() => setSelectedAbiItem(fn)}
-              className={`w-full text-left font-sm hover:bg-neutral-100 py-2 px-3 rounded-xl hover:cursor-pointer ${fn.name === selectedAbiItem?.name && "bg-neutral-100 font-semibold"}`}
+              className={`font-sm w-full rounded-xl px-3 py-2 text-left hover:cursor-pointer hover:bg-neutral-100 ${fn.name === selectedAbiItem?.name && "bg-neutral-100 font-semibold"}`}
             >
               {!["pure", "view"].includes(fn.stateMutability) ? (
                 decodeCamelCase(fn.name)
@@ -105,11 +105,11 @@ export const FunctionSelector = ({
         </ul>
       </div>
       {/* Form */}
-      <div className="w-2/3 bg-primary-50 rounded-r-lg py-4 overflow-y-auto">
+      <div className="bg-primary-50 w-2/3 overflow-y-auto rounded-r-lg py-4">
         {!!selectedAbiItem ? (
           <div className="">
-            <div className="flex flex-row justify-between items-center mx-4 mb-3 pb-4 border-b border-neutral-200">
-              <p className="text-md font-semibold text-neutral-800 mr-3">
+            <div className="mx-4 mb-3 flex flex-row items-center justify-between border-b border-neutral-200 pb-4">
+              <p className="text-md mr-3 font-semibold text-neutral-800">
                 <code>{decodeCamelCase(selectedAbiItem?.name)}</code>
               </p>
               <div className="">
