@@ -20,6 +20,7 @@ export function ActionForm() {
   const { performTransaction, performingTransaction } = usePerformTransaction({
     chainId: defaultChain.id,
   })
+  const [customAction, setCustomAction] = useState<boolean>(false)
 
   return (
     <div className="flex flex-col gap-7">
@@ -58,13 +59,19 @@ export function ActionForm() {
       </div>
       <div className="flex flex-col gap-3">
         <span className="text-xl">Add Actions</span>
-        {/* <FunctionCallForm
-        publicClient={publicClient as PublicClient}
-        onAddAction={(a) => setAction(actions.concat([a]))}
-      /> */}
-        <USDTTransferAction
-          onAddAction={(a) => setAction(actions.concat([a]))}
-        />
+        <Button onClick={() => setCustomAction(!customAction)}>
+          Toggle custom action
+        </Button>
+        {customAction ? (
+          <FunctionCallForm
+            publicClient={publicClient as PublicClient}
+            onAddAction={(a) => setAction(actions.concat([a]))}
+          />
+        ) : (
+          <USDTTransferAction
+            onAddAction={(a) => setAction(actions.concat([a]))}
+          />
+        )}
       </div>
     </div>
   )
