@@ -1,5 +1,6 @@
 import { FC, useState } from "react"
-import { encodeFunctionData, isAddress, parseAbi, parseUnits } from "viem"
+import { EthFowardContract } from "@/contracts/EthFoward"
+import { encodeFunctionData, isAddress, parseEther } from "viem"
 
 import { Action } from "@/types/action"
 import { Button } from "@/components/ui/button"
@@ -7,10 +8,10 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 
-interface USDTTransferActionProps {
+interface ETHTransferActionProps {
   onAddAction: (action: Action) => any
 }
-export const USDTTransferAction: FC<USDTTransferActionProps> = ({
+export const ETHTransferAction: FC<ETHTransferActionProps> = ({
   onAddAction,
 }) => {
   const { toast } = useToast()
@@ -19,7 +20,7 @@ export const USDTTransferAction: FC<USDTTransferActionProps> = ({
 
   return (
     <div className="flex flex-col gap-3">
-      <Label className="text-2xl">USDT Transfer</Label>
+      <Label className="text-2xl">ETH Transfer</Label>
       <div>
         <Label>Receiver Address</Label>
         <Input
@@ -57,12 +58,12 @@ export const USDTTransferAction: FC<USDTTransferActionProps> = ({
           }
 
           onAddAction({
-            to: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-            value: BigInt(0),
+            to: EthFowardContract.address,
+            value: parseEther(amount),
             data: encodeFunctionData({
-              abi: parseAbi(["function transfer(address to, uint256 amount)"]),
-              functionName: "transfer",
-              args: [receiver, parseUnits(amount, 6)],
+              abi: EthFowardContract.abi,
+              functionName: "forward",
+              args: [receiver],
             }),
           })
         }}

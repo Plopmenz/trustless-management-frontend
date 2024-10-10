@@ -1,5 +1,6 @@
 import { FC } from "react"
-import { decodeFunctionData, formatUnits, parseAbi } from "viem"
+import { EthFowardContract } from "@/contracts/EthFoward"
+import { decodeFunctionData, formatEther, formatUnits, parseAbi } from "viem"
 
 import { Action } from "@/types/action"
 
@@ -27,17 +28,36 @@ export const ShowAction: FC<ShowActionProps> = ({ action }) => {
       </Card>
     )
   } catch {
-    return (
-      <Card>
-        <CardHeader>
-          <CardTitle>Custom action</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-2">
-          <span>to: {action.to}</span>
-          <span>value: {action.value}</span>
-          <span>data: {action.data}</span>
-        </CardContent>
-      </Card>
-    )
+    try {
+      const args = decodeFunctionData({
+        abi: EthFowardContract.abi,
+        data: action.data,
+      })
+
+      return (
+        <Card>
+          <CardHeader>
+            <CardTitle>ETH Transfer</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-2">
+            <span>To: {args.args[0]}</span>
+            <span>Amount: {formatEther(action.value)}</span>
+          </CardContent>
+        </Card>
+      )
+    } catch {
+      return (
+        <Card>
+          <CardHeader>
+            <CardTitle>Custom action</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-2">
+            <span>To: {action.to}</span>
+            <span>Value: {formatEther(action.value)}</span>
+            <span>Data: {action.data}</span>
+          </CardContent>
+        </Card>
+      )
+    }
   }
 }
