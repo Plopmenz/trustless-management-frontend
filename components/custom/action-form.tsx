@@ -10,6 +10,8 @@ import { usePerformTransaction } from "@/hooks/usePerformTransaction"
 
 import { FunctionCallForm } from "../action/function-call-form"
 import { ShowAction } from "../action/show-action"
+import { AaveETHSupplyAction } from "../action/template/aave-eth-supply-action"
+import { AaveUSDTBorrowAction } from "../action/template/aave-usdt-borrow-action"
 import { ETHTransferAction } from "../action/template/eth-transfer-action"
 import { USDTTransferAction } from "../action/template/usdt-transfer-action"
 import { Button } from "../ui/button"
@@ -69,6 +71,12 @@ export function ActionForm() {
           onAddAction={(a) => setAction(actions.concat([a]))}
         />
         <ETHTransferAction
+          onAddAction={(a) => setAction(actions.concat([a]))}
+        />
+        <AaveETHSupplyAction
+          onAddAction={(a) => setAction(actions.concat([a]))}
+        />
+        <AaveUSDTBorrowAction
           onAddAction={(a) => setAction(actions.concat([a]))}
         />
       </div>
