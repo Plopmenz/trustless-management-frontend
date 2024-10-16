@@ -13,6 +13,7 @@ import { ShowAction } from "../action/show-action"
 import { AaveETHSupplyAction } from "../action/template/aave-eth-supply-action"
 import { AaveUSDTBorrowAction } from "../action/template/aave-usdt-borrow-action"
 import { ETHTransferAction } from "../action/template/eth-transfer-action"
+import { USDCTransferAction } from "../action/template/usdc-transfer-action"
 import { USDTTransferAction } from "../action/template/usdt-transfer-action"
 import { Button } from "../ui/button"
 import { defaultChain } from "./web3-provider"
@@ -68,6 +69,9 @@ export function ActionForm() {
         />
 
         <USDTTransferAction
+          onAddAction={(a) => setAction(actions.concat([a]))}
+        />
+        <USDCTransferAction
           onAddAction={(a) => setAction(actions.concat([a]))}
         />
         <ETHTransferAction
