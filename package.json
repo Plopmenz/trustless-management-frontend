@@ -25,6 +25,7 @@
     "@radix-ui/react-tabs": "^1.1.0",
     "@radix-ui/react-toast": "^1.2.1",
     "@shazow/whatsabi": "^0.14.1",
+    "@walletconnect/sign-client": "^2.17.3",
     "@web3modal/wagmi": "^5.1.4",
     "axios": "^1.7.5",
     "class-variance-authority": "^0.7.0",
