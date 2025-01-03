@@ -13,6 +13,7 @@ import { ShowAction } from "../action/show-action"
 import { AaveETHSupplyAction } from "../action/template/aave-eth-supply-action"
 import { AaveUSDTBorrowAction } from "../action/template/aave-usdt-borrow-action"
 import { ETHTransferAction } from "../action/template/eth-transfer-action"
+import { SOpenMintAction } from "../action/template/sopen-mint-action"
 import { USDCTransferAction } from "../action/template/usdc-transfer-action"
 import { USDTTransferAction } from "../action/template/usdt-transfer-action"
 import { WalletConnectAction } from "../action/walletconnect-action"
@@ -92,6 +93,7 @@ export function ActionForm() {
         <AaveUSDTBorrowAction
           onAddAction={(a) => setAction(actions.concat([a]))}
         />
+        <SOpenMintAction onAddAction={(a) => setAction(actions.concat([a]))} />
       </div>
     </div>
   )
